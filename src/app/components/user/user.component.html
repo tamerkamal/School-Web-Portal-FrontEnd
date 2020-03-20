@@ -1,0 +1,25 @@
+<div class="wrapper">
+  <form>
+    <label class="radio-inline">
+      <input (click)="switchLang('En')" type="radio" name="optradio" [checked]="lang=='En'">
+      English &nbsp; &nbsp;</label>
+    <label class="radio-inline">
+      <input (click)="switchLang('Ar')" type="radio" name="optradio" [checked]="lang=='Ar'">
+      Arabic </label>
+  </form>
+  <div class="wrapped-div">
+    <div class="tab-header" *ngIf="lang=='En'">
+      <h2 routerLink='/user/registration' routerLinkActive='active'>New Member</h2>
+      <h2 routerLink='/user/login' routerLinkActive='active'>Admin</h2>
+    </div>
+    <div class="tab-header" *ngIf="lang=='Ar'" dir="rtl">
+      <h2 routerLink='/user/registration' routerLinkActive='active'>عضو جديد</h2>
+      <h2 routerLink='/user/login' routerLinkActive='active'>مدير الموقع</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,171 @@
+<div *ngIf="lang=='En'">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-white">Members</a>
+    <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+  </nav>
+
+  <div class="container">
+    <div>
+      <h4 style="text-align:center">Members</h4>
+      <hr>
+    </div>
+    <div class="row">
+      <select name="sortBy" [(ngModel)]="sortBy" id="columName">
+        <option value="null">Sort By</option>
+        <option value="FirstName">FirstName</option>
+        <option value="BirthDate">BirthDate</option>
+      </select>
+      <select name="direction" [(ngModel)]="direction" id="direction">
+        <option value="Asc">Asc</option>
+        <option value="Desc">Desc</option>
+      </select>
+      <button (click)="getWithPagAndSort()">Sort</button>
+      <form>
+        <label class="radio-inline">
+          <input (click)="switchLang('En')" type="radio" name="optradio" [checked]="lang=='En'">
+          English &nbsp; &nbsp;</label>
+        <label class="radio-inline">
+          <input (click)="switchLang('Ar')" type="radio" name="optradio" [checked]="lang=='Ar'">
+          Arabic </label>
+      </form>
+    </div>
+    <br>
+    <table class="table table-hover table-bordered table-condensed" width="100%">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>BirthDate</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>MembershipType</th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of members">
+          <td>{{item.email}}</td>
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.birthDate}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.address}}</td>
+          <td>{{item.membershipType.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <div class="row">
+      <div class="col-md-4">
+        <button disabled>Items per page</button>
+        <select name="pageSize" [(ngModel)]="pageSize">
+          <option value="{{totalRecoreds}}" selected>All</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+        <button (click)="getWithPagAndSort()">Apply</button>
+
+      </div>
+      <div class="col-md-4">
+        <button disabled>Total Records</button>
+
+        <button disabled>{{totalRecords}}</button>
+      </div>
+      <div class="col-md-4">
+        <button [disabled]="pageNum==1" (click)="prevFunc()">Prev</button>
+        <button disabled>{{pageNum}}</button>
+        <button [disabled]="isDisableNext" (click)="nextFunc()">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="lang=='Ar'" dir="rtl" class="rightToLeft" [class]="lang=='Ar'">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand text-white">الأعضاء</a>
+    <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">خروج</button>
+  </nav>
+
+  <div class="container">
+    <div>
+      <h4 style="text-align:center">الأعضاء</h4>
+      <hr>
+    </div>
+    <div class="row">
+      <select name="sortBy" [(ngModel)]="sortBy" id="columName">
+        <option value="null"> رتب وفق</option>
+        <option value="FirstName">الاسم الأول</option>
+        <option value="BirthDate">تاريخ الميلاد</option>
+      </select>
+      <select name="direction" [(ngModel)]="direction" id="direction">
+        <option value="Asc">تصاعدى</option>
+        <option value="Desc">تنازلى</option>
+      </select>
+      <button (click)="getWithPagAndSort()">رتب</button>
+      <form>
+        <label class="radio-inline">
+          <input (click)="switchLang('En')" type="radio" name="optradio" [checked]="lang=='En'">
+          English &nbsp; &nbsp;</label>
+        <label class="radio-inline">
+          <input (click)="switchLang('Ar')" type="radio" name="optradio" [checked]="lang=='Ar'">
+          Arabic </label>
+      </form>
+    </div>
+    <br>
+    <table class="table table-hover table-bordered table-condensed" width="100%">
+      <thead>
+        <tr>
+          <th>البريد الالكترونى</th>
+          <th>الاسم الأول</th>
+          <th>الاسم الأخير</th>
+          <th>تاريخ الميلاد</th>
+          <th>رقم الهاتف</th>
+          <th>العنوان</th>
+          <th>نوع العضوية</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of members">
+          <td>{{item.email}}</td>
+          <td>{{item.firstName}}</td>
+          <td>{{item.lastName}}</td>
+          <td>{{item.birthDate}}</td>
+          <td>{{item.phone}}</td>
+          <td>{{item.address}}</td>
+          <td>{{item.membershipType.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <div class="row">
+      <div class="col-md-4">
+        <button disabled>عدد نتائج الصفحة</button>
+        <select name="pageSize" [(ngModel)]="pageSize">
+
+          <option value="{{totalRecoreds}}">الكل</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+
+        <button (click)="getWithPagAndSort()">نفذ</button>
+      </div>
+      <div class="col-md-4">
+
+        <button disabled>اجمالى النتائج</button>
+        <button disabled>{{totalRecords}}</button>
+      </div>
+      <div class="col-md-4">
+
+        <button [disabled]="pageNum==1" (click)="prevFunc()">السابق</button>
+        <button disabled>{{pageNum}}</button>
+
+        <button [disabled]="isDisableNext" (click)="nextFunc()">التالى</button>
+      </div>
+    </div>
+  </div>
+</div>

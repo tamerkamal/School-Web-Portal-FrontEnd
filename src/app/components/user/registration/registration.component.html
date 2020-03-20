@@ -1,0 +1,123 @@
+<form *ngIf="lang=='En'" autocomplete="off" (submit)="onSubmit()">
+  <div class="form-group required">
+    <label>Email</label>
+    <input type="email" class="form-control" name="Email" [(ngModel)]="registerVModel.Email">
+  </div>
+
+  <div>
+    <div class="form-group required">
+      <label>Password</label>
+      <input type="password" class="form-control" name="Password" [(ngModel)]="registerVModel.Password">
+    </div>
+  </div>
+
+  <div>
+    <div class="form-group required">
+      <label>Confirm Password</label>
+      <input type="password" class="form-control" name="ConfirmPassword" [(ngModel)]="registerVModel.ConfirmPassword">
+    </div>
+  </div>
+
+  <div class="form-group required">
+    <label>First Name</label>
+    <input class="form-control" name="FirsName" [(ngModel)]="registerVModel.FirsName">
+  </div>
+
+  <div class="form-group required">
+    <label>Last Name</label>
+    <input class="form-control" name="LastName" [(ngModel)]="registerVModel.LastName">
+  </div>
+
+  <div class="form-group required">
+    <label>BirthDate</label>
+    <input type="date" class="form-control" name="BirthDate" [(ngModel)]="registerVModel.BirthDate">
+  </div>
+
+  <div class="form-group required">
+    <label>Phone</label>
+    <input class="form-control" name="Phone" [(ngModel)]="registerVModel.Phone">
+  </div>
+
+  <div class="form-group required">
+    <label>Address</label>
+    <input name="Address" class="form-control" [(ngModel)]="registerVModel.Address">
+  </div>
+
+  <div class="form-group required">
+    <label>MemberShip Type</label>
+    <select class="form-control" name="MembershipTypeName" [(ngModel)]="registerVModel.MembershipTypeName">
+      <option value="Student" selected>Student</option>
+      <option value="Parent">Parent</option>
+      <option value="Teacher">Teacher</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-8 offset-md-2">
+      <button type="submit" class="btn btn-lg btn-block">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+<div dir="rtl">
+  <form *ngIf="lang=='Ar'" autocomplete="off" (submit)="onSubmit()">
+    <div class="form-group required">
+      <label>البريد الالكترونى</label>
+      <input type="email" class="form-control" name="Email" [(ngModel)]="registerVModel.Email">
+    </div>
+
+    <div>
+      <div class="form-group required">
+        <label>كلمة المرور</label>
+        <input type="password" class="form-control" name="Password" [(ngModel)]="registerVModel.Password">
+      </div>
+    </div>
+
+    <div>
+      <div class="form-group required">
+        <label>نأكيد كلمة المرور</label>
+        <input type="password" class="form-control" name="ConfirmPassword" [(ngModel)]="registerVModel.ConfirmPassword">
+      </div>
+    </div>
+
+    <div class="form-group required">
+      <label>الاسم الأول</label>
+      <input class="form-control" name="FirsName" [(ngModel)]="registerVModel.FirsName">
+    </div>
+
+    <div class="form-group required">
+      <label>الاسم الأخير</label>
+      <input class="form-control" name="LastName" [(ngModel)]="registerVModel.LastName">
+    </div>
+
+    <div class="form-group required">
+      <label>تاريخ الميلاد</label>
+      <input type="date" class="form-control" name="BirthDate" [(ngModel)]="registerVModel.BirthDate">
+    </div>
+
+    <div class="form-group required">
+      <label>رقم الهاتف</label>
+      <input class="form-control" name="Phone" [(ngModel)]="registerVModel.Phone">
+    </div>
+
+    <div class="form-group required">
+      <label>العنوان</label>
+      <input name="Address" class="form-control" [(ngModel)]="registerVModel.Address">
+    </div>
+
+    <div class="form-group required">
+      <label>نوع العضوية</label>
+      <select class="form-control" name="MembershipTypeName" [(ngModel)]="registerVModel.MembershipTypeName">
+        <option value="Student">طالب</option>
+        <option value="Parent">ولى أمر</option>
+        <option value="Teacher">معلم</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-8 offset-md-2">
+        <button type="submit" class="btn btn-lg btn-block">انشاء</button>
+      </div>
+    </div>
+  </form>
+</div>
