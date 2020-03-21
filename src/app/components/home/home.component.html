@@ -10,16 +10,16 @@
       <hr>
     </div>
     <div class="row">
-      <select name="sortBy" [(ngModel)]="sortBy" id="columName">
+      <select (change)="getWithPagAndSort()" name="sortBy" [(ngModel)]="sortBy" id="columName">
         <option value="null">Sort By</option>
         <option value="FirstName">FirstName</option>
         <option value="BirthDate">BirthDate</option>
       </select>
-      <select name="direction" [(ngModel)]="direction" id="direction">
+      <select (change)="getWithPagAndSort()" name="direction" [(ngModel)]="direction" id="direction">
         <option value="Asc">Asc</option>
         <option value="Desc">Desc</option>
       </select>
-      <button (click)="getWithPagAndSort()">Sort</button>
+      <!-- <button >Sort</button> -->
       <form>
         <label class="radio-inline">
           <input (click)="switchLang('En')" type="radio" name="optradio" [checked]="lang=='En'">
@@ -57,16 +57,15 @@
       </tbody>
     </table>
     <hr>
-    <div class="row">
+    <div class="row" style="padding-bottom: 2%;">
       <div class="col-md-4">
         <button disabled>Items per page</button>
-        <select name="pageSize" [(ngModel)]="pageSize">
-          <option value="{{totalRecoreds}}" selected>All</option>
+        <select (change)="getWithPagAndSort()" name="pageSize" [(ngModel)]="pageSize">
+          <option value="" selected>All</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
-        </select>
-        <button (click)="getWithPagAndSort()">Apply</button>
+        </select>       
 
       </div>
       <div class="col-md-4">
@@ -83,7 +82,7 @@
   </div>
 </div>
 
-<div *ngIf="lang=='Ar'" dir="rtl" class="rightToLeft" [class]="lang=='Ar'">
+<div *ngIf="lang=='Ar'" dir="rtl">
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand text-white">الأعضاء</a>
     <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">خروج</button>
@@ -95,16 +94,16 @@
       <hr>
     </div>
     <div class="row">
-      <select name="sortBy" [(ngModel)]="sortBy" id="columName">
+      <select (change)="getWithPagAndSort()"  name="sortBy" [(ngModel)]="sortBy" id="columName">
         <option value="null"> رتب وفق</option>
         <option value="FirstName">الاسم الأول</option>
         <option value="BirthDate">تاريخ الميلاد</option>
       </select>
-      <select name="direction" [(ngModel)]="direction" id="direction">
+      <select (change)="getWithPagAndSort()" name="direction" [(ngModel)]="direction" id="direction">
         <option value="Asc">تصاعدى</option>
         <option value="Desc">تنازلى</option>
       </select>
-      <button (click)="getWithPagAndSort()">رتب</button>
+      <!-- <button (click)="getWithPagAndSort()">رتب</button> -->
       <form>
         <label class="radio-inline">
           <input (click)="switchLang('En')" type="radio" name="optradio" [checked]="lang=='En'">
@@ -144,16 +143,14 @@
     <div class="row">
       <div class="col-md-4">
         <button disabled>عدد نتائج الصفحة</button>
-        <select name="pageSize" [(ngModel)]="pageSize">
-
-          <option value="{{totalRecoreds}}">الكل</option>
+        <select (change)="getWithPagAndSort()" name="pageSize" [(ngModel)]="pageSize">
+          <option value="">الكل</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>
-
-        <button (click)="getWithPagAndSort()">نفذ</button>
       </div>
+
       <div class="col-md-4">
 
         <button disabled>اجمالى النتائج</button>

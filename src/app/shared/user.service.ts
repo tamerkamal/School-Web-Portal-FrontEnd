@@ -24,7 +24,7 @@ export class UserService {
     return this.http.get(this.BaseURI + '/Users/Get');
   }
 
-  getWithPagAndSort(pageNum:number,pageSize:number,sortBy:string,isSortDesc:Boolean){
+  getWithPagAndSort(pageNum:number=1,pageSize:number=null,sortBy:string,isSortDesc:Boolean){
     return this.http
     .get(this.BaseURI +`/Users/GetWithPagAndSort/${pageNum}/${pageSize}/${sortBy}/${isSortDesc}`);
   }

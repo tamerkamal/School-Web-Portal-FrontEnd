@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   sortBy: string = null;
   direction: string = "Asc";
   pageSize: number;
-  isDisableNext:boolean=true;
+  isDisableNext: boolean = true;
 
   constructor(private router: Router, private service: UserService) { }
 
@@ -56,7 +56,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/user/login']);
   }
 
-  getWithPagAndSort() {  
+  getWithPagAndSort() {
+    if (!this.pageSize) {
+      this.pageSize = this.totalRecords;
+    }
     let isSortDesc = false;
     if (this.direction == "Desc") {
       isSortDesc = true;
@@ -64,13 +67,14 @@ export class HomeComponent implements OnInit {
     this.service.getWithPagAndSort(this.pageNum, this.pageSize, this.sortBy, isSortDesc)
       .subscribe(
         res => {
+        
           console.log(res);
           this.members = res as Member[];
-          if (this.pageNum>= this.getTotalPages()){
-            this.isDisableNext=true;
+          if (this.pageNum >= this.getTotalPages()) {
+            this.isDisableNext = true;
           }
-          else{
-            this.isDisableNext=false;
+          else {
+            this.isDisableNext = false;
           }
         },
         err => {
@@ -78,21 +82,20 @@ export class HomeComponent implements OnInit {
         },
       );
   }
-  nextFunc() 
-  {
+  nextFunc() {
     if (this.pageNum <= this.getTotalPages()) {
       this.pageNum += 1;
       this.getWithPagAndSort();
     }
-    else{
-      this.isDisableNext=true;
+    else {
+      this.isDisableNext = true;
     }
   }
 
   prevFunc() {
-    if(this.pageNum>1){
-    this.pageNum -= 1;
-    this.getWithPagAndSort();
+    if (this.pageNum > 1) {
+      this.pageNum -= 1;
+      this.getWithPagAndSort();
     }
   }
 
